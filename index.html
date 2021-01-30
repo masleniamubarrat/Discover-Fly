@@ -99,7 +99,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="bookNow" class="btn-style">Book Now</button>
         </div>
 
         <div class="booking-content">
@@ -114,7 +114,7 @@
         var ecoDecreaseClick = 0;
         document.getElementById("firstIncreaseBtn").addEventListener("click", function(){
             firstIncreaseClick++;
-                 inputIncrease("firstInputClass", 150);
+                 inputIncrease("firstInputClass");
         })
 
         document.getElementById("ecoIncreaseBtn").addEventListener("click", function(){
@@ -144,63 +144,57 @@
                if(id=="firstInputClass")
               {
                 document.getElementById(id).value = firstIncreaseClick;
-                firstTktValue =  150*firstIncreaseClick;
-               var x = document.getElementById("subTotal").innerText;
-                x = parseFloat(x);
-                 subtotal = x+150;
-                document.getElementById("subTotal").innerText=subtotal;
-                 vat = (10/100)*subtotal;
-                document.getElementById("vat").innerText = vat;
-                
-                
-                 total = subtotal + vat;
-            document.getElementById("total").innerText = total;
-
+                inputTotalChange("subTotal", 150);
 
                
               }  
                else  if(id=="ecoInputBox"){
                 document.getElementById(id).value = ecoIncreaseClick;
-                var x = document.getElementById("subTotal").innerText;
-                x = parseFloat(x);
-                 subtotal = x+100;
-                document.getElementById("subTotal").innerText=subtotal;
-                 vat = (10/100)*subtotal;
-                document.getElementById("vat").innerText = vat;
-                var total = subtotal + vat;
-            document.getElementById("total").innerText = total;
-
+                inputTotalChange("subTotal", 100);
+           
                }
-               var subTotal = firstTktValue + ecoTktValue;
-               //document.getElementById("subTotal").innerText = subTotal;
+              
               } 
         function inputDecrease(id){
             if(id=="firstInputClass")
               {
                 document.getElementById(id).value = firstIncreaseClick;
-                var x = document.getElementById("subTotal").innerText;
-                x = parseFloat(x);
-                 subtotal = x-150;
-                document.getElementById("subTotal").innerText=subtotal;
-                 vat = (10/100)*subtotal;
-                document.getElementById("vat").innerText = vat;
-                var total = subtotal + vat;
-            document.getElementById("total").innerText = total;
+                inputTotalChange("subTotal", -150);
+            //     var x = document.getElementById("subTotal").innerText;
+            //     x = parseFloat(x);
+            //      subtotal = x-150;
+            //     document.getElementById("subTotal").innerText=subtotal;
+            //      vat = (10/100)*subtotal;
+            //     document.getElementById("vat").innerText = vat;
+            //     var total = subtotal + vat;
+            // document.getElementById("total").innerText = total;
               }
             else   if(id=="ecoInputBox"){
                 document.getElementById(id).value = ecoIncreaseClick;
-                var x = document.getElementById("subTotal").innerText;
-                x = parseFloat(x);
-                 subtotal = x-100;
-                document.getElementById("subTotal").innerText=subtotal;
-                 vat = (10/100)*subtotal;
-                document.getElementById("vat").innerText = vat;
-                var total = subtotal + vat;
-            document.getElementById("total").innerText = total;
+                inputTotalChange("subTotal", -100)
+            //     var x = document.getElementById("subTotal").innerText;
+            //     x = parseFloat(x);
+            //      subtotal = x-100;
+            //     document.getElementById("subTotal").innerText=subtotal;
+            //      vat = (10/100)*subtotal;
+            //     document.getElementById("vat").innerText = vat;
+            //     var total = subtotal + vat;
+            // document.getElementById("total").innerText = total;
 
                }
 
             
+        }
+        function inputTotalChange(id, tktValue){
+            var x = document.getElementById(id).innerText;
+                x = parseFloat(x);
+                 subtotal = x+tktValue;
+                document.getElementById(id).innerText=subtotal;
+                 vat = (10/100)*subtotal;
+                document.getElementById("vat").innerText = vat;        
+                
+                 total = subtotal + vat;
+            document.getElementById("total").innerText = total;
         }
 
     </script>
