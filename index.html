@@ -110,8 +110,7 @@
     <script>
         var firstIncreaseClick = 0;
         var ecoIncreaseClick = 0;
-        var firstDecreaseClick = 0;
-        var ecoDecreaseClick = 0;
+        //event handler for plus minus button click
         document.getElementById("firstIncreaseBtn").addEventListener("click", function(){
             firstIncreaseClick++;
                  inputIncrease("firstInputClass");
@@ -140,6 +139,7 @@
         var subtotal;
         var vat;
         var total
+        //this function will count increase of ticket numbers ( first class+ economoy)
         function inputIncrease(id){
                if(id=="firstInputClass")
               {
@@ -155,6 +155,7 @@
                }
               
               } 
+           ////this function will count decreasse  of ticket numbers ( first class+ economoy)   
         function inputDecrease(id){
             if(id=="firstInputClass")
               {
@@ -181,6 +182,7 @@
         document.getElementById("bookNow").addEventListener("click",function(){
 
         } )
+        //event handler for book now button click
         document.getElementById("bookNow").addEventListener("click", function(){
             var totalTktNumber = firstIncreaseClick + ecoIncreaseClick;
             alert("Congratulations!!! You have successfully booked your ticket. You have purchased "+ totalTktNumber +" tickets. Your total ammount is "+ total +" . Have a great journey with us.");
