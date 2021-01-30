@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--Header and Menu Section-->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="active" href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Booking Section-->
+    <main class="main-content container">
+        <div class="booking-form">
+            <h3>Booking Flights</h3>
+            <div class="input-group">
+                <label for="">Flying From</label>
+                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+            </div>
+            <div class="input-group">
+                <label for="">Flying To</label>
+                <input class="inp-style" type="text" name="" placeholder="New York, United States">
+            </div>
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">Departure</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+                <div class="input-group">
+                    <label for="">Return</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+            </div>
+            <div class="input-group f-class">
+                <div>
+                    <label for="">First Class ($150)</label>
+                    <input id="firstInputClass" class="inp-style inp-width" type="number" name="">
+                </div>
+                <div class="plus-minus-btn">
+                    <button class="btn btn-success"><span id="firstIncreaseBtn">+</span></button>
+                    <br>
+                    <button class="btn btn-success"><span id="firstDecreaseBtn" >-</span></button>
+                </div>
+            </div>
+            
+            <div class="input-group f-class">
+                <div>
+                    <label for="">Economy ($100)</label>
+                    <input id="ecoInputBox" class="inp-style inp-width" type="number" name="">
+                </div>
+                <div class="plus-minus-btn">
+                      <button class="btn btn-success"><span id="ecoIncreaseBtn">+</span></button>
+                      <br>
+                      <button class="btn btn-success"><span id="ecoDecreaseBtn">-</span></button>
+                </div>
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p id="subTotal">0</p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p>Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p id="vat">0</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p id="total">0</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-style">Book Now</button>
+        </div>
+
+        <div class="booking-content">
+            <h1>discover <br> around the world</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
+        </div>
+    </section>
+    <script>
+        var firstIncreaseClick = 0;
+        var ecoIncreaseClick = 0;
+        var firstDecreaseClick = 0;
+        var ecoDecreaseClick = 0;
+        document.getElementById("firstIncreaseBtn").addEventListener("click", function(){
+            firstIncreaseClick++;
+                 inputIncrease("firstInputClass", 150);
+        })
+
+        document.getElementById("ecoIncreaseBtn").addEventListener("click", function(){
+            ecoIncreaseClick++;
+                 inputIncrease("ecoInputBox");
+        })
+
+        document.getElementById("firstDecreaseBtn").addEventListener("click", function(){
+            if(firstIncreaseClick==0)
+            alert("invalid")
+            else{ firstIncreaseClick--;
+                 inputDecrease("firstInputClass");}
+        })
+        document.getElementById("ecoDecreaseBtn").addEventListener("click", function(){
+            if(ecoIncreaseClick==0)
+           alert("invalid");
+            else{ ecoIncreaseClick--;
+                 inputDecrease("ecoInputBox");}
+        })
+
+        var firstTktValue;
+        var ecoTktValue;
+        var subtotal;
+        var vat;
+        var total
+        function inputIncrease(id){
+               if(id=="firstInputClass")
+              {
+                document.getElementById(id).value = firstIncreaseClick;
+                firstTktValue =  150*firstIncreaseClick;
+               var x = document.getElementById("subTotal").innerText;
+                x = parseFloat(x);
+                 subtotal = x+150;
+                document.getElementById("subTotal").innerText=subtotal;
+                 vat = (10/100)*subtotal;
+                document.getElementById("vat").innerText = vat;
+                
+                
+                 total = subtotal + vat;
+            document.getElementById("total").innerText = total;
+
+
+               
+              }  
+               else  if(id=="ecoInputBox"){
+                document.getElementById(id).value = ecoIncreaseClick;
+                var x = document.getElementById("subTotal").innerText;
+                x = parseFloat(x);
+                 subtotal = x+100;
+                document.getElementById("subTotal").innerText=subtotal;
+                 vat = (10/100)*subtotal;
+                document.getElementById("vat").innerText = vat;
+                var total = subtotal + vat;
+            document.getElementById("total").innerText = total;
+
+               }
+               var subTotal = firstTktValue + ecoTktValue;
+               //document.getElementById("subTotal").innerText = subTotal;
+              } 
+        function inputDecrease(id){
+            if(id=="firstInputClass")
+              {
+                document.getElementById(id).value = firstIncreaseClick;
+                var x = document.getElementById("subTotal").innerText;
+                x = parseFloat(x);
+                 subtotal = x-150;
+                document.getElementById("subTotal").innerText=subtotal;
+                 vat = (10/100)*subtotal;
+                document.getElementById("vat").innerText = vat;
+                var total = subtotal + vat;
+            document.getElementById("total").innerText = total;
+              }
+            else   if(id=="ecoInputBox"){
+                document.getElementById(id).value = ecoIncreaseClick;
+                var x = document.getElementById("subTotal").innerText;
+                x = parseFloat(x);
+                 subtotal = x-100;
+                document.getElementById("subTotal").innerText=subtotal;
+                 vat = (10/100)*subtotal;
+                document.getElementById("vat").innerText = vat;
+                var total = subtotal + vat;
+            document.getElementById("total").innerText = total;
+
+               }
+
+            
+        }
+
+    </script>
+     
+    
+</body>
+
+</html>
