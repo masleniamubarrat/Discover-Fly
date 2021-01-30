@@ -178,9 +178,16 @@
                  total = subtotal + vat;
             document.getElementById("total").innerText = total;
         }
+        document.getElementById("bookNow").addEventListener("click",function(){
 
-    </script>
-     
+        } )
+        document.getElementById("bookNow").addEventListener("click", function(){
+            var totalTktNumber = firstIncreaseClick + ecoIncreaseClick;
+            alert("Congratulations!!! You have successfully booked your ticket. You have purchased "+ totalTktNumber +" tickets. Your total ammount is "+ total +" . Have a great journey with us.");
+
+                                                                           
+        })
+     </script>
     
 </body>
 
